@@ -1,11 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Task 1",
-    "\\Task 3",
-    "\\Task 4",
-    "\\Task 4\\obj"
+    "\\Week 1",
+    "\\Week 1\\Task 1",
+    "\\Week 1\\Task 2",
+    "\\Week 2",
+    "\\Week 2\\Task 1"
   ],
-  "SelectedNode": "\\Task 1\\Program.cs",
+  "SelectedNode": "\\Week 2\\Task 1\\input.txt",
   "PreviewInSolutionExplorer": false
 }
