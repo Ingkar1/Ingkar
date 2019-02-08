@@ -8,28 +8,41 @@ namespace task_2
 {
     class Student 
 {
-        public string name;
-        public string id;
+        private string name;
+        private string id;
         public int yearofstudy;
-        
-        public void inc()
-        {
-            yearofstudy++;
-        }
-
-        public Student( string name, string id,int yearofstudy)
+         
+        public Student( string name, string id)
         {
             
             this.name = name;
             this.id = id;
-            this.yearofstudy = yearofstudy;
+            
         }
-   
+        public void inc()
+        {
+            yearofstudy++;
+        }
         
-          public override string ToString()
+          public int Yearofstudy
+            {
+            get
+            {
+                return yearofstudy;
+            }
+            set
+            {
+                yearofstudy=value;
+            }
+            
+
+       
+}
+        
+          /*public override string ToString()
             {
             return name+" "+id+" "+yearofstudy;
-            }
+            }*/
 }
         
 
@@ -37,8 +50,10 @@ namespace task_2
     {
         static void Main(string[] args)
         {
-               Student st1 = new Student("aaa", "18BD01027", 2018);
-             Console.WriteLine(st1);
+               Student st1 = new Student("Ingkar", "18BD01027");
+               st1.yearofstudy=2018;
+               st1.inc();
+            Console.WriteLine(st1.yearofstudy);
             Console.ReadKey();
         }
     }
