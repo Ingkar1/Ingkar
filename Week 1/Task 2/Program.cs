@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace task_2
 {
-    class Student 
-{
+    class Program
+    {
+         class Student 
+          {
         private string name;
         private string id;
-        public int yearofstudy;
+        private int yearofstudy;
          
         public Student( string name, string id)
         {
@@ -35,19 +37,9 @@ namespace task_2
                 yearofstudy=value;
             }
             
-
+        }
        
-}
-        
-          /*public override string ToString()
-            {
-            return name+" "+id+" "+yearofstudy;
-            }*/
-}
-        
 
-    class Program
-    {
         static void Main(string[] args)
         {
                Student st1 = new Student("Ingkar", "18BD01027");
@@ -56,5 +48,10 @@ namespace task_2
             Console.WriteLine(st1.yearofstudy);
             Console.ReadKey();
         }
-    }
+  
+  
+       }
+
+
 }
+    }
