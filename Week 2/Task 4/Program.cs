@@ -9,33 +9,47 @@ namespace Task_4
 {
     class Program
     {
-       /*private static void Ex1()
-        {
-            DirectoryInfo dir = new DirectoryInfo(@"C:\Users\ww\photo");
-            var folders = dir.GetDirectories();
-            foreach(var i in folders)
-            {
-                Console.WriteLine(i.Name);
-            }
-        }*/
-   
-            
-        
-        public static void DeleteDirectory(string directoryName, bool checkDirectiryExist)
-        {
-            if (Directory.Exists(directoryName))
-                Directory.Delete(directoryName, true);
-            else if (checkDirectiryExist)
-                throw new SystemException("Directory you want to delete is not exist");
-        }
-    }
-}
+  
         static void Main(string[] args)
         {
-            DirectoryInfo yourRootDir = new DirectoryInfo(@"C:\somedirectory\");
-            foreach (DirectoryInfo dir in yourRootDir.GetDirectories())
-                    DeleteDirectory(dir.FullName, true);
-            //Ex1();
+            string fileName="test.txt";
+            string path="C:/Users/ww/photo/1";
+            string path1="C:/Users/ww/photo/2";
+
+            string sourceFile=Path.Combine(path,fileName);
+            string destFile=Path.Combine(path1,fileName);
+
+           FileStream fs=File.Create(sourceFile);
+            
+            fs.Close();
+            
+            
+
+             if (Directory.Exists(path))
+        {
+            string[] files = Directory.GetFiles(path);
+
+            // Copy the files and overwrite destination files if they already exist.
+            foreach (string s in files)
+            {
+                // Use static Path methods to extract only the file name from the path.
+                fileName = Path.GetFileName(s);
+                
+                File.Copy(s, destFile, true);
+            }
+        }
+        
+        
+        if(Directory.Exists("C:/Users/ww/photo/1"))
+          try
+        {
+            Directory.Delete("C:/Users/ww/photo/1",true);
+        }
+        catch (IOException e)
+        {
+            Console.WriteLine(e.Message);
+        }
+            
             Console.ReadKey();
         }
     }

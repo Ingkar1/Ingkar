@@ -5,22 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Task_3
-{
+    {  
     class Program
     {
-        static void Main(string[] args)
-        {
-            /*int a = int.Parse(Console.ReadLine());
-            string[] arr = Console.ReadLine().Split(' ');
-            */
-            string s=Console.ReadLine(); //enter first line(number)
-            int a = int.Parse(s);  //change string type to integer type
-            
-                string[] s1 = Console.ReadLine().Split(); //separate the elements of entered array
-              
-          
-            
-            
+             public static void Ex3(string[] s1,int a)
+              {       
             for (int i = 0; i < a; i++) //run through the elements of array
             {
                   int b = int.Parse(s1[i]); //change the type of elements(string) to integer type
@@ -37,5 +26,20 @@ namespace Task_3
             }
       
         }
+    
+        static void Main(string[] args)
+        {
+            
+            string s=Console.ReadLine(); //enter first line(number)
+            int a = int.Parse(s);  //change string type to integer type
+            string[] s1 = Console.ReadLine().Split(); //separate the elements of entered array
+            Ex3(s1,a);
+          
+            
+            
+           Console.ReadKey();
+      
+        }
     }
 }
+
