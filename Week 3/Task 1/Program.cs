@@ -3,21 +3,22 @@ using System.IO;
 
 namespace Ex1
 {
-    class FarManager
+    class FarManager //new class of FarManager
     {
-        public int cursor;
+        public int cursor;     
         public string path;
         public int sz;
         public bool ok;
         DirectoryInfo directory = null;
         FileSystemInfo currentFs = null;
 
-        public FarManager()
+        public FarManager() 
         {
             cursor = 0;
         }
 
-        public FarManager(string path)
+        public FarManager(string path) //the Path class which performs operations 
+                                       //on String instances that contain file or directory path information
         {
             this.path = path;
             cursor = 0;
@@ -26,7 +27,7 @@ namespace Ex1
             ok = true;
         }
 
-        public void Color(FileSystemInfo fs, int index,int i)
+        public void Color(FileSystemInfo fs, int index,int i) //function to show a color
         {
             if (cursor == index && cursor==i)
             {
@@ -46,14 +47,14 @@ namespace Ex1
             }
         }
 
-        public void Show()
+        public void Show()  //create a function to show a files
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
             directory = new DirectoryInfo(path);
             FileSystemInfo[] fs = directory.GetFileSystemInfos(); 
            
-            for (int i = 0, k = 0; i < fs.Length; i++)
+            for (int i = 0, k = 0; i < fs.Length; i++)  //thic cycle helps to avoid from reading a files that start with "."
             {
                 if (ok == false && fs[i].Name[0] == '.')
                 {
@@ -68,26 +69,26 @@ namespace Ex1
                 k++;
             }
         }
-        public void Up()
+        public void Up() //cursor up
         {
             cursor--;
             if (cursor < 0)
                 cursor = sz - 1;
         }
-        public void Down()
+        public void Down() //cursor down
         {
             cursor++;
             if (cursor == sz)
                 cursor = 0;
         }
-        public void Opentxt(string path)
+        public void Opentxt(string path) //to open text file
             {
             Console.Clear();
-            StreamReader sr=new StreamReader(path);
-            string s=sr.ReadToEnd();
-            Console.WriteLine(s);
-            ConsoleKeyInfo k1=Console.ReadKey();
-            if(k1.Key==ConsoleKey.Backspace)
+            StreamReader sr=new StreamReader(path); //new reader for reading text files
+            string s=sr.ReadToEnd();  //read all
+            Console.WriteLine(s);  //write in console
+            ConsoleKeyInfo k1=Console.ReadKey(); 
+            if(k1.Key==ConsoleKey.Backspace) //in order to exit from directory or file
                 {
                 sr.Close();
                 return;
@@ -95,7 +96,7 @@ namespace Ex1
             else
             Opentxt(path);
             }
-        public void CalcSz()
+        public void CalcSz()  //this function does not show a files that start with '.'
         {
             directory = new DirectoryInfo(path);
             FileSystemInfo[] fs = directory.GetFileSystemInfos();
@@ -109,54 +110,47 @@ namespace Ex1
         public void Start()
         {
             ConsoleKeyInfo consoleKey = Console.ReadKey();
-            while (consoleKey.Key != ConsoleKey.Escape)
+            while (consoleKey.Key != ConsoleKey.Escape)  //condition
             {
                 CalcSz();
                 Show();
                 consoleKey = Console.ReadKey();
-                if (consoleKey.Key == ConsoleKey.UpArrow)
-                    Up();
+                if (consoleKey.Key == ConsoleKey.UpArrow)  
+                    Up();  //call Up function
                 if (consoleKey.Key == ConsoleKey.DownArrow)
-                    Down();
-                if (consoleKey.Key == ConsoleKey.RightArrow)
-                {
-                    ok = false;
-                    cursor = 0;
-                }
-                if (consoleKey.Key == ConsoleKey.LeftArrow)
-                {
-                    cursor = 0;
-                    ok = true;
-                }
-                if (consoleKey.Key == ConsoleKey.Enter)
+                    Down(); //call Down function 
+              
+                if (consoleKey.Key == ConsoleKey.Enter) //to open current directory
                 {
                     if (currentFs.GetType() == typeof(DirectoryInfo))
                     {
                         cursor = 0;
                         path = currentFs.FullName;
                     }
-                    else if(currentFs.Name.EndsWith(".txt"))
+                    else if(currentFs.Name.EndsWith(".txt")) //if you press Enter key to text file,Opentxt function will be called and text file will be opened
                         Opentxt(currentFs.FullName);
                     
                 }
-                if (consoleKey.Key == ConsoleKey.Backspace)
+                if (consoleKey.Key == ConsoleKey.Backspace) //to go backward 
                 {
                     cursor = 0;
                     path = directory.Parent.FullName;
                 }
-                if(consoleKey.Key==ConsoleKey.Delete)
+                if(consoleKey.Key==ConsoleKey.Delete) //to delete file or directory where cursor is
                 {           
                            cursor=0;
+                     if(currentFs.GetType()==typeof(DirectoryInfo))
+                     Directory.Delete(currentFs.FullName, true); 
                            currentFs.Delete();
                 }
-                if(consoleKey.Key==ConsoleKey.N)
+                if(consoleKey.Key==ConsoleKey.N)  // to rename the files or directories
                     {
                     string a=Console.ReadLine();
                     a=Path.Combine(directory.FullName,a);
                     if(currentFs.GetType()== typeof(DirectoryInfo))
                         Directory.Move(currentFs.FullName,a);
                     else
-                        File.Move(currentFs.FullName,a);
+                        File.Move(currentFs.FullName,a); //Move function
                     }
 
                 
@@ -172,8 +166,8 @@ namespace Ex1
         static void Main(string[] args)
         {
             string path = "C:/History";
-            FarManager farManager = new FarManager(path);
-            farManager.Start();
+            FarManager farManager = new FarManager(path); //create new far manager
+            farManager.Start(); //call function Start()
         }
     }
 }
