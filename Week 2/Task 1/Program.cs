@@ -18,10 +18,10 @@ namespace Task_1
         }*/
         static void g(string s)
         {
-            string t=s; 
-            char[] array = s.ToCharArray();
-           Array.Reverse(array);
-            if (new string(array)==t)
+            string t=s;  //firstly we take a string t that equal to s
+            char[] array = s.ToCharArray();    //to separate and put chars of s string to array of chars
+           Array.Reverse(array);    //function to reverse 
+            if (new string(array)==t) //condition of checking equality of reversed array to string t
                 Console.WriteLine("Yes");
             else
                 Console.WriteLine("No");
@@ -29,11 +29,11 @@ namespace Task_1
     static void Ex2()
         {
 
-            StreamReader sr = new StreamReader("C:/Users/ww/Documents/input.txt");
-            string s = sr.ReadToEnd();
-            Console.WriteLine(s);
-            g(s); 
-            sr.Close();
+            StreamReader sr = new StreamReader("C:/Users/ww/Documents/input.txt"); //create reader to read information  from given path
+            string s = sr.ReadToEnd();  //read all
+            Console.WriteLine(s); //write in Console all information as string s
+            g(s); //function of checking polyndrome
+            sr.Close(); //after reading and writing in Console we close the reader
         }
 
        
@@ -41,7 +41,7 @@ namespace Task_1
         
         static void Main(string[] args)
         {
-            Ex2();
+            Ex2(); //funcion 
             Console.ReadKey();
         }
     }

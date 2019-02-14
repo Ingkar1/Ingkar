@@ -9,9 +9,9 @@ namespace Task_3
     class Program
     {
        
-        static void PrintInfo(FileSystemInfo f,int k)
+        static void PrintInfo(FileSystemInfo f,int k) //to Print the names of files and directories 
             {
-            string line=new string(' ',k);
+            string line=new string(' ',k); 
             line=line+f.Name;
             Console.WriteLine(line);
             if(f.GetType() == typeof(DirectoryInfo))
@@ -28,8 +28,8 @@ namespace Task_3
 
         static void Main(string[] args)
         { 
-            DirectoryInfo d = new DirectoryInfo("C:/Users/ww/photo");
-                PrintInfo(d, 1);
+            DirectoryInfo d = new DirectoryInfo("C:/Users/ww/photo"); //to point out the directory
+                PrintInfo(d, 1);//1 is the index where writing will be started
           
             Console.ReadKey();
         }

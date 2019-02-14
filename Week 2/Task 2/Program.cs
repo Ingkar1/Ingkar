@@ -8,7 +8,7 @@ namespace Task_2
 {
     class Program
     {
-        public static bool prime(int a)               
+        public static bool prime(int a)      //boolean function to check is number prime or not(false if not,true if prime)           
         {
 
             if (a<=1)
@@ -29,21 +29,21 @@ namespace Task_2
 
         static void Main(string[] args)
         {
-            StreamReader sr = new StreamReader("C:/Users/ww/Documents/input.txt");
-            string s = sr.ReadToEnd();
-            string []s1=s.Split();
+            StreamReader sr = new StreamReader("C:/Users/ww/Documents/input.txt"); //new reader to read information from given path
+            string s = sr.ReadToEnd(); //read all 
+            string []s1=s.Split();  //to separate the numbers that splitted by space to array of string 
           
-            StreamWriter sw = new StreamWriter("C:/Users/ww/Documents/output.txt");
+            StreamWriter sw = new StreamWriter("C:/Users/ww/Documents/output.txt"); //new writer that will contain information in given path
            
-            for(int i=0;i<s1.Count();i++)
+            for(int i=0;i<s1.Count();i++)  //check array in cycle by using prime boolean function 
             {
             int b=int.Parse(s1[i]);
             if(prime(b)==true)
              {
-            sw.Write(b+" ");
+            sw.Write(b+" "); //to write prime numbers in writer path
              }
             }
-         sw.Close(); 
+         sw.Close(); //to close writer after checking all of numbers 
        
         }
     }

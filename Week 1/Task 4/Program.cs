@@ -10,11 +10,11 @@ namespace Task_4
     {
         static void Main(string[] args)
         {
-            int a=int.Parse(Console.ReadLine()); 
-             int[,] arr = new int[a, a];
-             for (int i = 0; i < a; i++)
+            int a=int.Parse(Console.ReadLine());  //to change the string type of entered string to int type
+             int[,] arr = new int[a, a];   //create a 2D array of integer type
+             for (int i = 0; i < a; i++)  
              {
-                 for (int j = 0; j < a; j++)
+                 for (int j = 0; j < a; j++)  ///cycle to write in Console "[*]"
                  {
                      if (i >= j)
                          Console.Write("[*]");
