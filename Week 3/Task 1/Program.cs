@@ -31,7 +31,7 @@ namespace Ex1
         {
             if (cursor == index && cursor==i)
             {
-                Console.BackgroundColor = ConsoleColor.Red;
+                Console.BackgroundColor = ConsoleColor.Green;
                 Console.ForegroundColor = ConsoleColor.White;
                 currentFs = fs;
             }
@@ -51,8 +51,8 @@ namespace Ex1
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.Clear();
-            directory = new DirectoryInfo(path);
-            FileSystemInfo[] fs = directory.GetFileSystemInfos(); 
+            directory = new DirectoryInfo(path);                                        //newdirectory
+            FileSystemInfo[] fs = directory.GetFileSystemInfos();                     //newfilesystem
            
             for (int i = 0, k = 0; i < fs.Length; i++)  //thic cycle helps to avoid from reading a files that start with "."
             {
@@ -61,13 +61,14 @@ namespace Ex1
                     continue;
                 }
              
-                
+                                                                              //colorfs
                     
                 Color(fs[i], k,i);
                 Console.Write(i+1+". ");
                 Console.WriteLine(fs[i].Name);
                 k++;
             }
+            //Console.WriteLine(count + " " + count1);
         }
         public void Up() //cursor up
         {
@@ -81,6 +82,24 @@ namespace Ex1
             if (cursor == sz)
                 cursor = 0;
         }
+        public void Count(string path)  {  
+            int count=0;
+             int count1=0;
+            directory=new DirectoryInfo(path);
+            FileSystemInfo []fs=directory.GetFileSystemInfos();
+            for(int i=0;i<fs.Length;i++)
+             {
+            if(fs[i].GetType()==typeof(DirectoryInfo))
+            {
+            count++;
+            }
+            if(fs[i].GetType()==typeof(FileInfo)){
+            count1++;         
+        }
+            }
+            Console.WriteLine(count + " " + count1);
+            Console.ReadKey();
+            }
         public void Opentxt(string path) //to open text file
             {
             Console.Clear();
@@ -114,6 +133,7 @@ namespace Ex1
             {
                 CalcSz();
                 Show();
+                Count(path);
                 consoleKey = Console.ReadKey();
                 if (consoleKey.Key == ConsoleKey.UpArrow)  
                     Up();  //call Up function
@@ -148,7 +168,9 @@ namespace Ex1
                     string a=Console.ReadLine();
                     a=Path.Combine(directory.FullName,a);
                     if(currentFs.GetType()== typeof(DirectoryInfo))
+                        {
                         Directory.Move(currentFs.FullName,a);
+                        }
                     else
                         File.Move(currentFs.FullName,a); //Move function
                     }

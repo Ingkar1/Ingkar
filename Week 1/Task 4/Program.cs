@@ -22,6 +22,7 @@ namespace Task_4
 
                  Console.WriteLine();
              }
+             Console.ReadKey();
              
         }
     }
