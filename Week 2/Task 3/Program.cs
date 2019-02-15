@@ -12,8 +12,8 @@ namespace Task_3
         static void PrintInfo(FileSystemInfo f,int k) //to Print the names of files and directories 
             {
             string line=new string(' ',k); 
-            line=line+f.Name;
-            Console.WriteLine(line);
+            string newline=line+f.Name;
+            Console.WriteLine(newline);
             if(f.GetType() == typeof(DirectoryInfo))
                 {
                 var items=(f as DirectoryInfo).GetFileSystemInfos();

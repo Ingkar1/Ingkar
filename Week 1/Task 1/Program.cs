@@ -30,7 +30,7 @@ namespace Task_1
                     {
                     t+=s2[i]+" "; //to add a prime numbers to string t if condition is true
                    count1++; //count the whole prime numbers
-                    }                  
+                }              
                    
                      
 
